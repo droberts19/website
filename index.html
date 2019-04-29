@@ -47,8 +47,9 @@
           <p class="lead">Welcome to IDK.com! We are happy to welcome you to the grand opening of our site! Please set up your profile below!</p>
         </center>
     </div>
+
     <div class="container-fluid">
-        <form>
+        <form id="set1">
             <div class="form-group">
                 <label for="InputName">Name:</label>
                 <input class="form-control" id="InputName" placeholder="Enter name">
@@ -65,77 +66,122 @@
                 <label for="InputPassword">Password:</label>
                 <input type="password" class="form-control" id="InputPassword" placeholder="Password">
             </div>
-            <div class="form-group">
-                <label for="Color">Favorite Color:</label>
-                <input type="form-control" class="form-control" id="Color" placeholder="Favorite Color">
-            </div>
-            <div class="form-group">
-                <label for="Color">Favorite Animal:</label>
-                <input type="form-control" class="form-control" id="Color" placeholder="Favorite Animal">
-            </div>
-            <div class="form-group">
-                <label for="Color">Favorite School Subject:</label>
-                <input type="form-control" class="form-control" id="Color" placeholder="Favorite School Subject">
-            </div>
-            <div class="form-group">
-                <label for="Color">Favorite Planet:</label>
-                <input type="form-control" class="form-control" id="Color" placeholder="Favorite Planet">
-            </div>
-            <div class="form-group">
-                <label for="Color">Favorite Word:</label>
-                <input type="form-control" class="form-control" id="Color" placeholder="Favorite Word">
-            </div>
-            <div class="form-group">
-                <label for="Color">Favorite Sport:</label>
-                <input type="form-control" class="form-control" id="Color" placeholder="Favorite Sport">
-            </div>
-            <div class="form-group">
-                <label for="Color">Favorite Childhood Toy:</label>
-                <input type="form-control" class="form-control" id="Color" placeholder="Favorite Childhood Toy">
-            </div>
-               
-            <center>
-              <h2 >Choose Your Profile Picture:</h1>
-            </center>
 
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active" data-interval="1000000">
-                    <img src="flower1.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
-                  </div>
-                  <div class="carousel-item" data-interval="1000000">
-                    <img src="flower2.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
-                  </div>
-                  <div class="carousel-item" data-interval="1000000">
-                    <img src="flower3.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
-                  </div>
-                  <div class="carousel-item" data-interval="1000000">
-                    <img src="flower4.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
-                  </div>
-                  <div class="carousel-item" data-interval="1000000">
-                    <img src="flower5.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary btn-lg btn-block" style="background:deepskyblue; border:deepskyblue; color:black" submit onclick="alert('Are You Sure?')">Sign Up</button>
-            <br>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="next1" style="background:deepskyblue; border:deepskyblue; color:black" onclick="doStuff(1)">Next</button>
         </form>
+
+        <form id="set2" style="display:none;">
+          <div class="form-group">
+              <label for="Color">Favorite Color:</label>
+              <input type="form-control" class="form-control" id="Color" placeholder="Favorite Color">
+          </div>
+          <div class="form-group">
+              <label for="Color">Favorite Animal:</label>
+              <input type="form-control" class="form-control" id="Color" placeholder="Favorite Animal">
+          </div>
+          <div class="form-group">
+              <label for="Color">Favorite School Subject:</label>
+              <input type="form-control" class="form-control" id="Color" placeholder="Favorite School Subject">
+          </div>
+          <div class="form-group">
+              <label for="Color">Favorite Planet:</label>
+              <input type="form-control" class="form-control" id="Color" placeholder="Favorite Planet">
+          </div>
+          <div class="form-group">
+              <label for="Color">Favorite Word:</label>
+              <input type="form-control" class="form-control" id="Color" placeholder="Favorite Word">
+          </div>
+          <div class="form-group">
+              <label for="Color">Favorite Sport:</label>
+              <input type="form-control" class="form-control" id="Color" placeholder="Favorite Sport">
+          </div>
+          <div class="form-group">
+              <label for="Color">Favorite Childhood Toy:</label>
+              <input type="form-control" class="form-control" id="Color" placeholder="Favorite Childhood Toy">
+          </div>
+
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="next2" style="background:deepskyblue; border:deepskyblue; color:black" onclick="doStuff(2)">Next</button>
+        </form>
+
+        <form id="set3" style="display: none;">
+          <center>
+            <h2 >Choose Your Profile Picture:</h1>
+          </center>
+
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="true">
+                  <img src="flower1.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
+                </div>
+                <div class="carousel-item" data-interval="1000000">
+                  <img src="flower2.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
+                </div>
+                <div class="carousel-item" data-interval="1000000">
+                  <img src="flower3.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
+                </div>
+                <div class="carousel-item" data-interval="1000000">
+                  <img src="flower4.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
+                </div>
+                <div class="carousel-item" data-interval="1000000">
+                  <img src="flower5.jpg" class="d-block w-100" alt="..." width="100%" height="100%">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+          </div>
+          <br>
+          <button type="button" class="btn btn-primary btn-lg btn-block" style="background:deepskyblue; border:deepskyblue; color:black" onclick="done()">Sign Up</button>
+        </form>
+        <div id="thanks" name="thanks" class="alert alert-primary" role="alert" style="display:none;">
+          Thanks for submitting your answers to this form.
+        </div>
+        <br>
     </div>
+
+    <script>
+
+      function doStuff(set) {
+        // set is which set of questions was just displayed
+        if (set > 0 && set < 3) {
+            // stop displaying the current next button 
+            var lastButton = document.getElementById("next"+set);
+            lastButton.style.display = "none";
+            // start displaying the next set (questions+button)
+            var nextQuestions = document.getElementById("set"+(set+1));
+            nextQuestions.style.display = "block";
+
+            // automatically scroll down to new questions
+            window.location = "#set"+(set+1);
+        }
+      }
+
+      function done(){
+        // let user know that these answers are DISAPPEARING FOREVER
+        alert('Where do these answers get stored?');
+        // stop displaying all of the alerts, questions, and buttons 
+        for (var i = 1; i < 4; i = i + 1) {
+            var nextQuestions = document.getElementById("set"+i);
+            nextQuestions.style.display = "none";
+        }
+        // start displaying the thanks alert
+        var thanksAlert = document.getElementById("thanks");
+        thanksAlert.style.display = "block";
+      }
+
+    </script>
+
 </body>
 </html>
