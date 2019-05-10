@@ -29,7 +29,7 @@
                 <a class="nav-link" style="color:whitesmoke" href="#">Shop</a>
             </li>
             <li>
-                <a class="nav-link" style="color:whitesmoke" href="#">Setup Profile</a>
+                <a class="nav-link" style="color:whitesmoke" href="https://droberts19.github.io/website/">Setup Profile</a>
             </li>
             <li>
                 <a class="nav-link" style="color:whitesmoke" href="#">Info</a>
@@ -54,7 +54,7 @@
           Text input succesfully restored from previous usage.
       </div>
     </div>
-
+    
     <form id="set0">
       <div class="jumbotron" style="background:deepskyblue">
         <center>
@@ -159,8 +159,62 @@
               </a>
           </div>
           <br>
-          <button type="button" class="btn btn-primary btn-lg btn-block" style="background:deepskyblue; border:deepskyblue; color:black" onclick="done()">Sign Up</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="next3" style="background:deepskyblue; border:deepskyblue; color:black" onclick="doStuff(3)">Next</button>
         </form>
+
+        <form id="set4" style="display: none">
+            <center>
+                <h2 >Movie Quiz</h2>
+            </center>
+            <br>
+            <div class="form-group">
+              <label for="Color">Type a movie:</label>
+              <input type="form-control" class="form-control" id="searchmovie" placeholder="">
+              <br>
+              <button type="submit" class="btn btn-primary mb-2" style="background:deepskyblue; border:deepskyblue; color:black" onclick="API()">Search</button>
+            </div>
+            <div class="form-group">
+                <label for="Color">What year was it released?</label>
+                <input type="form-control" class="form-control" id="year" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="Color">Who is(are) the director(s)?</label>
+                <input type="form-control" class="form-control" id="director" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="Color">What genres?</label>
+              <input type="form-control" class="form-control" id="genre" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="Color">What is the runtime?</label>
+              <input type="form-control" class="form-control" id="runtime" placeholder="">
+          </div>
+            <br>
+            <button type="submit" class="btn btn-primary mb-2" style="background:deepskyblue; border:deepskyblue; color:black" onclick="check()">Check</button>
+            <br>
+            <button type="button" id="finalbutton" class="btn btn-primary btn-lg btn-block" style="display: none; background:deepskyblue; border:deepskyblue; color:black" onclick="done()">Sign Up</button>
+        </form>
+
+        <form style="display: none">
+          <div class="form-group">
+            <label for="Color">Year:</label>
+            <input type="form-control" class="form-control" id="yearans" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="Color">Director:</label>
+            <input type="form-control" class="form-control" id="directorans" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="Color">Genres:</label>
+            <input type="form-control" class="form-control" id="genreans" placeholder="">
+          </div>
+          <div class="form-group">
+            <label for="Color">Runtime:</label>
+            <input type="form-control" class="form-control" id="runtimeans" placeholder="">
+          </div>
+        </form>
+
+
         <br>
           <div id="thanks" name="thanks" class="alert alert-success" role="alert" style="display:none;">
             Thanks for submitting your answers to this form.
@@ -170,12 +224,77 @@
 
     <script>
 
+      var getJSON = function(url, callback) {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true);
+                xhr.responseType = 'json';
+                xhr.onload = function() {
+                    var status = xhr.status;
+                    if (status === 200) {
+                        callback(null, xhr.response);
+                    } else {
+                        callback(status, xhr.response);
+                    }
+                };
+                xhr.send();
+      };
+
+      function API() {
+        var searchedmovie = document.getElementById("searchmovie").value;
+        var theyear = document.getElementById("yearans");
+        var thedirector = document.getElementById("directorans");
+        var thegenre = document.getElementById("genreans");
+        var theruntime = document.getElementById("runtimeans");
+        getJSON('http://www.omdbapi.com/?t="'+searchedmovie+'"&apikey=7b3f6d4e',
+                function(err, data) {
+                    if (err !== null) {
+                        alert('API dont work' + err);
+                    } else {
+                      var stuff = data;
+                      theyear.value = stuff.Year;
+                      thedirector.value = stuff.Director;
+                      thegenre.value = stuff.Genre;
+                      theruntime.value = stuff.Runtime;
+                    }
+        });
+      }
+
+      function check() {
+        var years = document.getElementById("year").value;
+        var directors = document.getElementById("director").value;
+        var genres = document.getElementById("genre").value;
+        var runtimes = document.getElementById("runtime").value;
+        var theyear = document.getElementById("yearans").value;
+        var thedirector = document.getElementById("directorans").value;
+        var thegenre = document.getElementById("genreans").value;
+        var theruntime = document.getElementById("runtimeans").value;
+        var finalbuttonz = document.getElementById("finalbutton");
+        if (years === theyear) {
+          if (directors === thedirector) {
+            if (genres === thegenre) {
+              if (runtimes === theruntime) {
+                alert("You pass the quiz!");
+                finalbuttonz.style.display = "block";
+              } else {
+                alert("You failed! Try again!");
+              }
+            } else {
+              alert("You failed! Try again!");
+            }
+          }  else {
+            alert("You failed! Try again!");
+          }
+        } else {
+          alert("You failed! Try again!")
+        }
+      }
+      
       function doStuff(set) {
         // Once next button is pressed, we're no longer talking about restored data.
         document.getElementById("restored").style.display = "none";
         
         // set is which set of questions was just displayed
-        if (set > 0 && set < 3) {
+        if (set > 0 && set < 4) {
             // stop displaying the current next button 
             var lastButton = document.getElementById("next"+set);
             lastButton.style.display = "none";
@@ -193,7 +312,7 @@
 
         alert('Are you sure?');
         // stop displaying all of the alerts, questions, and buttons 
-        for (var i = 0; i < 4; i = i + 1) {
+        for (var i = 0; i < 5; i = i + 1) {
             var nextQuestions = document.getElementById("set"+i);
             nextQuestions.style.display = "none";
         }
@@ -264,7 +383,7 @@
                 document.getElementById("Toy").value = dataObject.Toy;
 
                 // Display Restored alert at top of form
-                document.getElementById("restored").style.display = "block";
+                document.getElementById("restored").style.display = "none";
 
                 // Go through all previously-completed sets of questions and display them
                 var set = window.localStorage.getItem("lastDisplayedSet");
