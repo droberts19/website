@@ -190,8 +190,7 @@
               <input type="form-control" class="form-control" id="runtime" placeholder="">
           </div>
             <br>
-            <button type="submit" class="btn btn-primary mb-2" style="background:deepskyblue; border:deepskyblue; color:black" onclick="check()">Check</button>
-            <br>
+            <button type="button" id="checkz" class="btn btn-primary mb-2" style="background:deepskyblue; border:deepskyblue; color:black" onclick="check()">Check</button>
             <button type="button" id="finalbutton" class="btn btn-primary btn-lg btn-block" style="display: none; background:deepskyblue; border:deepskyblue; color:black" onclick="done()">Sign Up</button>
         </form>
 
@@ -270,12 +269,14 @@
         var thegenre = document.getElementById("genreans").value;
         var theruntime = document.getElementById("runtimeans").value;
         var finalbuttonz = document.getElementById("finalbutton");
+        var check = document.getElementById("checkz");
         if (years === theyear) {
           if (directors === thedirector) {
             if (genres === thegenre) {
               if (runtimes === theruntime) {
                 alert("You pass the quiz!");
                 finalbuttonz.style.display = "block";
+                checkz.style.display = "none";
               } else {
                 alert("You failed! Try again!");
               }
